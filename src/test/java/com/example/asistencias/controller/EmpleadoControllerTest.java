@@ -27,9 +27,9 @@ class EmpleadoControllerTest {
     void buscarPorId_CuandoExiste_DebeRetornar200() throws Exception {
         // Arrange: simular un empleado existente
         Empleado empleado = new Empleado();
-        empleado.setId(1);
-        empleado.setNombres("Luis");
-        empleado.setApellidos("Ramos Huamán");
+        empleado.setId(2);
+        empleado.setNombres("Ana");
+        empleado.setApellidos("Torres Quispe");
         empleado.setTipo("P");
         empleado.setIdHorario(1);
 
@@ -39,10 +39,10 @@ class EmpleadoControllerTest {
         mockMvc.perform(get("/api/empleados/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.nombres").value("Luis"))
-                .andExpect(jsonPath("$.apellidos").value("Ramos Huamán"))
-                .andExpect(jsonPath("$.tipo").value("P"))
-                .andExpect(jsonPath("$.idHorario").value(1));
+                .andExpect(jsonPath("$.nombres").value("Ana"))
+                .andExpect(jsonPath("$.apellidos").value("Torres Quispe"))
+                .andExpect(jsonPath("$.tipo").value("O"))
+                .andExpect(jsonPath("$.idHorario").value(2));
     }
 
     @Test
