@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.asistencias.mapper.EmpleadoMapper">
+
+    <!-- READ: listar todos -->
+    <select id="listar"
+            resultType="com.example.asistencias.modelo.Empleado">
+        SELECT id, nombres, apellidos, tipo, id_horario AS "idHorario"
+        FROM empleado
+        ORDER BY id
+    </select>
+
+    <!-- READ: buscar por ID -->
+    <select id="buscarPorId"
+            parameterType="int"
+            resultType="com.example.asistencias.modelo.Empleado">
+        SELECT id, nombres, apellidos, tipo, id_horario AS "idHorario"
+        FROM empleado
+        WHERE id = #{id}
+    </select>
+
+    <!-- CREATE: insertar -->
+    <insert id="crear"
+            parameterType="com.example.asistencias.modelo.Empleado"
+            useGeneratedKeys="true"
+            keyProperty="id"
+            keyColumn="id">
+        INSERT INTO empleado (
+        nombres, apellidos, tipo, id_horario
+        )
+        VALUES (
+        #{nombres}, #{apellidos}, #{tipo}, #{idHorario}
+        )
+    </insert>
+
+    <!-- UPDATE: actualizar -->
+    <update id="actualizar"
+            parameterType="com.example.asistencias.modelo.Empleado">
+        UPDATE empleado
+        SET nombres = #{nombres},
+        apellidos = #{apellidos},
+        tipo = #{tipo},
+        id_horario = #{idHorario}
+        WHERE id = #{id}
+    </update>
+
+    <!-- DELETE: eliminar -->
+    <delete id="eliminar" parameterType="int">
+        DELETE FROM empleado
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

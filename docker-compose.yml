@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      TZ: ${POSTGRES_TZ}
+      PGTZ: ${POSTGRES_TZ}
+
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres1_data:/var/lib/postgresql/data
+
+volumes:
+  postgres1_data:
