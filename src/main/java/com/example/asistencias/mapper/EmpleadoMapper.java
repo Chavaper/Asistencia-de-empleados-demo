@@ -10,12 +10,8 @@ import java.util.List;
 public interface EmpleadoMapper {
 
     List<Empleado> listar();
-
     Empleado buscarPorId(Integer id);
-
     int crear(Empleado empleado);
-
     int actualizar(Empleado empleado);
-
     int eliminar(Integer id);
 }
